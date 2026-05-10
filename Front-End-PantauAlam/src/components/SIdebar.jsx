@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-function Sidebar() {
-    const [open, setOpen] = useState(window.innerWidth >= 768);
+function Sidebar({open, setOpen}) {
+    
     const [time, setTime] = useState(new Date())
     useEffect(() => {
         const interval = setInterval(() => {
