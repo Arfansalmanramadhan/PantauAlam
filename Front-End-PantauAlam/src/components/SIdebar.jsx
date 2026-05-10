@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react"
 function Sidebar() {
     const [open, setOpen] = useState(window.innerWidth >= 768);
-
+    const [time, setTime] = useState(new Date())
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTime(new Date())
+        }, 1000)
+        return () => clearInterval(interval)
+    }, [])
     // Detect resize layar
     useEffect(() => {
         const handleResize = () => {
@@ -77,8 +83,12 @@ function Sidebar() {
                         </a>
                     </li>
 
-                    
+
                 </ul>
+                <div className="mt-4 text-center">
+                    <p className="text-3xl font-bold tracking-wider">{time.toLocaleTimeString("id-ID")}</p>
+                    <p className="text-sm mt-1">{time.toLocaleDateString("id-ID")}</p>
+                </div>
             </div>
         </div>
     )
