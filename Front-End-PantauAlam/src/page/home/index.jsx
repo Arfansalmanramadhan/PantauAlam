@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react"
 import Sidebar from "../../components/SIdebar"
 import Main from "../../components/Main"
+import { CuacaSaatIni, CuacaBesok, CuacaLusa } from "../Cuaca/CuacaSaatIni"
+import Tab from "../Tab"
+
 function Home() {
     const [open, setOpen] = useState(window.innerWidth >= 768);
+    const [activetab, setActiveTab] = useState(0)
     // Detect resize layar
     useEffect(() => {
         const handleResize = () => {
@@ -22,10 +26,36 @@ function Home() {
             <div className="flex">
                 <Sidebar open={open} setOpen={setOpen} />
                 <Main open={open}>
-                    <div className=" flex justify-center items-center h-screen bg-gray-100 ">
-                        <h1 className="text-3xl font-bold text-blue-600 underline">
-                            Halo, Tailwind sudah aktif!
-                        </h1>
+                    <div className="flex gap-4 mb-4 relative z-70 left-15">
+                        <Tab
+                            label="Cuaca Hari Ini"
+                            num={0}
+                            activee={activetab === 0}
+                            onClick={setActiveTab}
+                        />
+
+                        <Tab
+                            label="Cuaca Besok" 
+                            num={1}
+                            activee={activetab === 1}
+                            onClick={setActiveTab}
+                        />
+
+                        <Tab
+                            label="Cuaca Lusa"
+                            num={2}
+                            activee={activetab === 2}
+                            onClick={setActiveTab}
+                        />
+                    </div>
+                    <div>
+
+                        {activetab === 0 && <CuacaSaatIni />}
+
+                        {activetab === 1 && <CuacaBesok />}
+
+                        {activetab === 2 && <CuacaLusa />}
+
                     </div>
                 </Main>
             </div>
