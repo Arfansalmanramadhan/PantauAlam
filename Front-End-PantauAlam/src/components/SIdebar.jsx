@@ -1,27 +1,6 @@
-import { useState, useEffect } from "react"
+
 function Sidebar({open, setOpen}) {
-    
-    const [time, setTime] = useState(new Date())
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTime(new Date())
-        }, 1000)
-        return () => clearInterval(interval)
-    }, [])
-    // Detect resize layar
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth >= 768) {
-                setOpen(true);
-            } else {
-                setOpen(false);
-            }
-        };
 
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
     return (
 
         <div className="flex">
@@ -30,7 +9,7 @@ function Sidebar({open, setOpen}) {
                 onClick={() => setOpen(true)}
                 className="fixed top-4 left-4 z-50 bg-blue-400 text-white p-3 rounded-lg "
             >
-                Menu
+                ☰
             </button>
 
             {/* OVERLAY */}
@@ -82,13 +61,7 @@ function Sidebar({open, setOpen}) {
                             Gempa
                         </a>
                     </li>
-
-
                 </ul>
-                <div className="mt-4 text-center">
-                    <p className="text-3xl font-bold tracking-wider">{time.toLocaleTimeString("id-ID")}</p>
-                    <p className="text-sm mt-1">{time.toLocaleDateString("id-ID")}</p>
-                </div>
             </div>
         </div>
     )

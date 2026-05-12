@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import Sidebar from "../../components/SIdebar"
+import Header from "../../components/Header"
 import Main from "../../components/Main"
 import { CuacaSaatIni, CuacaBesok, CuacaLusa } from "../Cuaca/CuacaSaatIni"
 import Tab from "../Tab"
@@ -26,7 +27,9 @@ function Home() {
             <div className="flex">
                 <Sidebar open={open} setOpen={setOpen} />
                 <Main open={open}>
-                    <div className="flex gap-4 mb-4 relative z-70 left-15">
+                <Header />
+                    
+                    <div className="flex gap-4 mb-4 relative z-50 left-15">
                         <Tab
                             label="Cuaca Hari Ini"
                             num={0}
