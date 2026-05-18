@@ -7,10 +7,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const filePathWilayah = path.join(__dirname, '../data/api/wilayah.json');
-
+let cuacaCache = null;
+let lastFetchTime = null;
 const folderVillages = path.join(__dirname, '../data/api/village/');
 export const getCuaca = async (req, res) => {
     try {
+        const waktuMinimalSelesai = 15 * 60 * 1000; // 10 menit dalam milidetik
+        if (cuacaCache  && (Date.now() - lastFetchTime < waktuMinimalSelesai)) {
+            return response(200, cuacaCache, 'Success (Cached)', res);
+        }
         if (!fs.existsSync(filePathWilayah)) {
             return response(404, null, 'File wilayah.json tidak ditemukan', res);
         }
@@ -85,7 +90,8 @@ export const getCuaca = async (req, res) => {
                 }
             })
         );
-
+        cuacaCache = dataCuaca;
+        lastFetchTime = Date.now();
         response(200, dataCuaca, 'Success', res);
 
     } catch (error) {

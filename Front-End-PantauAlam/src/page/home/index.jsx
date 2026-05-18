@@ -8,6 +8,21 @@ import Tab from "../Tab"
 function Home() {
     const [open, setOpen] = useState(window.innerWidth >= 768);
     const [activetab, setActiveTab] = useState(0)
+    const [daftarCuaca, setDaftarCuaca] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        fetch('http://localhost:5000/api/cuaca')
+            .then(response => response.json())
+            .then(data => {
+                setDaftarCuaca(data.payload || data.data || data)
+                setLoading(false)
+                // console.log('data cuaca berhasil dimuat', data)
+            })
+            .catch(err => {
+                console.error('gagal memuat data cuaca', err)
+                setLoading(false)
+            })
+    }, [])
     // Detect resize layar
     useEffect(() => {
         const handleResize = () => {
@@ -29,7 +44,7 @@ function Home() {
                 <Main open={open}>
                 <Header />
                     
-                    <div className="flex gap-4 mb-4 relative z-50 left-15">
+                    <div className="flex gap-4 mb-4 relative sm:z-50 left-15">
                         <Tab
                             label="Cuaca Hari Ini"
                             num={0}
@@ -53,11 +68,11 @@ function Home() {
                     </div>
                     <div>
 
-                        {activetab === 0 && <CuacaSaatIni />}
+                        {activetab === 0 && <CuacaSaatIni data={daftarCuaca} />}
 
-                        {activetab === 1 && <CuacaBesok />}
+                        {activetab === 1 && <CuacaBesok data={daftarCuaca} />}
 
-                        {activetab === 2 && <CuacaLusa />}
+                        {activetab === 2 && <CuacaLusa data={daftarCuaca} />}
 
                     </div>
                 </Main>
