@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-export function CuacaSaatIni({ data }) {
+export function CuacaSaatIni({ data, halaman, setHalaman, totalHalaman }) {
+    const listWilayah = data?.data?.payload || data?.payload || []  ;
     return (
         <>
             <div className="px-14">
                 <h2 className='text-2x1 font-bold text-gray-800 mb-6 border-b pb-2'>Cuaca saat ini</h2>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-                    {data.map((wilayah) => {
+                    {listWilayah.map((wilayah) => {
                         // if (wilayah.status || wilayah.error) return null
                         if (wilayah.status || wilayah.error) {
                             return (
@@ -20,25 +21,33 @@ export function CuacaSaatIni({ data }) {
                             )
                         }
                         const skrg = wilayah.cuaca_sekarang
+                        const lokasi = wilayah.lokasi;
                         return (
                             <div key={wilayah.id} className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col justify-between">
-                                {/* Bagian Atas: Gambar/Icon Cuaca */}
+
+                                {/* Bagian Atas: Icon & Suhu */}
                                 <div className="bg-gradient-to-br from-blue-400 to-indigo-500 p-6 flex flex-col items-center text-white">
-                                    <img className="w-20 h-20 object-contain drop-shadow-md" src={skrg.icon} alt={skrg.kondisi} />
-                                    <h4 className="text-3xl font-black mt-2">{skrg.suhu}</h4>
-                                    <p className="text-sm font-medium opacity-90">{skrg.kondisi}</p>
+                                    <img className="w-20 h-20 object-contain drop-shadow-md" src={skrg?.icon} alt={skrg?.kondisi} />
+                                    <h4 className="text-3xl font-black mt-2">{skrg?.suhu}</h4>
+                                    <p className="text-sm font-medium opacity-90">{skrg?.kondisi}</p>
                                 </div>
+
                                 {/* Bagian Konten */}
                                 <div className="p-4 flex-1 flex flex-col justify-between">
                                     <div>
-                                        <h3 className="text-lg font-bold text-gray-800 truncate">{wilayah.lokasi.desa}</h3>
-                                        <p className="text-xs text-gray-500 mb-2">{wilayah.lokasi.kecamatan}, {wilayah.lokasi.kabkota}</p>
-                                        <p className="text-xs text-gray-400">🕒 {skrg.waktu_lokal} WIB</p>
+                                        <h3 className="text-lg font-bold text-gray-800 truncate">{lokasi?.kabkota}</h3>
+                                        <p className="text-xs text-gray-500 mb-2">{lokasi?.desa}, {lokasi?.kecamatan}, {lokasi?.provinsi}</p>
+
+                                        {/* TAMPILAN JAM UTK WIB/WITA/WIT AUTOMATIC */}
+                                        <p className="text-xs text-gray-400 font-semibold">
+                                            {/* 🕒 {dapatkanZonaWaktu(lokasi?.provinsi, skrg?.waktu_lokal)} */}
+                                        </p>
                                     </div>
                                     <button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold text-sm hover:bg-blue-600 transition">
                                         Lihat Detail
                                     </button>
                                 </div>
+
                             </div>
                         );
                     })}
@@ -96,7 +105,7 @@ export function CuacaBesok({ data }) {
                                     <div>
                                         <h3 className="text-lg font-bold text-gray-800 truncate">{wilayah.lokasi.desa}</h3>
                                         <p className="text-xs text-gray-500 mb-2">{wilayah.lokasi.kecamatan}, {wilayah.lokasi.kabkota}</p>
-                                        <p className="text-xs text-gray-400">🕒 {besok.waktu_lokal} WIB</p>
+                                        <p className="text-xs text-gray-400">🕒 {besok.waktu_lokal.substring(11, 16)}</p>
                                     </div>
                                     <button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold text-sm hover:bg-blue-600 transition">
                                         Lihat Detail
@@ -129,7 +138,7 @@ export function CuacaBesok({ data }) {
 export function CuacaLusa({ data }) {
     return (
         <>
-        <div className="px-14">
+            <div className="px-14">
                 <h2 className='text-2x1 font-bold text-gray-800 mb-6 border-b pb-2'>Cuaca Lusa</h2>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                     {data.map((wilayah) => {
@@ -159,7 +168,7 @@ export function CuacaLusa({ data }) {
                                     <div>
                                         <h3 className="text-lg font-bold text-gray-800 truncate">{wilayah.lokasi.desa}</h3>
                                         <p className="text-xs text-gray-500 mb-2">{wilayah.lokasi.kecamatan}, {wilayah.lokasi.kabkota}</p>
-                                        <p className="text-xs text-gray-400">🕒 {lusa.waktu_lokal} WIB</p>
+                                        <p className="text-xs text-gray-400">🕒 {lusa.waktu_lokal.substring(11, 16)}</p>
                                     </div>
                                     <button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold text-sm hover:bg-blue-600 transition">
                                         Lihat Detail
