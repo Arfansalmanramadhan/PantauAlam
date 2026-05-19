@@ -11,40 +11,12 @@ function Home() {
     const [daftarCuaca, setDaftarCuaca] = useState([]);
     const [loading, setLoading] = useState(true);
     const [halaman, setHalaman] = useState(1);
-    const [totalHalaman, setTotalHalaman] = useState(1);
     useEffect(() => {
         fetch(`http://localhost:5000/api/cuaca?page=${halaman}&limit=20`)
             .then(response => response.json())
-            // .then(resUtuh => {
-            //     // Cek jika respons dibungkus oleh fungsi helper response(status, data, message, res)
-            //     const dataBersih = resUtuh.data || resUtuh;
-
-            //     // Simpan objek { meta, payload } ke state
-            //     setDaftarCuaca(dataBersih);
-
-            //     // Ambil total_halaman dari metadata
-            //     if (dataBersih && dataBersih.meta) {
-            //         setTotalHalaman(dataBersih.meta.total_halaman || 1);
-            //     } else {
-            //         setTotalHalaman(1);
-            //     }
-
-            //     setLoading(false);
-            // })
             .then(data => {
-                // 1. Simpan seluruh objek response ke state daftarCuaca
-                setDaftarCuaca(data);
-
-                // 2. Ambil nilai total_halaman dari dalam struktur data helper response kamu
-                if (data && data.data && data.data.meta) {
-                    setTotalHalaman(data.data.meta.total_halaman);
-                } else if (data && data.meta) {
-                    setTotalHalaman(data.meta.total_halaman);
-                } else {
-                    setTotalHalaman(1);
-                }
-
-                setLoading(false);
+                setDaftarCuaca(data.payload || data.data || data)
+                setLoading(false)
                 // console.log('data cuaca berhasil dimuat', data)
             })
             .catch(err => {
@@ -97,26 +69,11 @@ function Home() {
                     </div>
                     <div>
 
-                        {activetab === 0 && <CuacaSaatIni
-                            data={daftarCuaca}
-                            halaman={halaman}
-                            setHalaman={setHalaman}
-                            totalHalaman={totalHalaman}
-                        />}
+                        {activetab === 0 && <CuacaSaatIni data={daftarCuaca} />}
 
-                        {activetab === 1 && <CuacaBesok
-                            data={daftarCuaca}
-                            halaman={halaman}
-                            setHalaman={setHalaman}
-                            totalHalaman={totalHalaman}
-                        />}
+                        {activetab === 1 && <CuacaBesok data={daftarCuaca} />}
 
-                        {activetab === 2 && <CuacaLusa
-                            data={daftarCuaca}
-                            halaman={halaman}
-                            setHalaman={setHalaman}
-                            totalHalaman={totalHalaman}
-                        />}
+                        {activetab === 2 && <CuacaLusa data={daftarCuaca} />}
 
                     </div>
                 </Main>
