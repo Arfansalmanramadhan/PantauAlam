@@ -8,7 +8,6 @@ export function CuacaSaatIni({ data, halaman, setHalaman, totalHalaman }) {
                 <h2 className='text-2x1 font-bold text-gray-800 mb-6 border-b pb-2'>Cuaca saat ini</h2>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                     {listWilayah
-                        .filter(wilayah => !wilayah.status && !wilayah.error)
                         .map((wilayah) => {
                             // if (wilayah.status || wilayah.error) return null
                             if (wilayah.status || wilayah.error) {
@@ -16,7 +15,7 @@ export function CuacaSaatIni({ data, halaman, setHalaman, totalHalaman }) {
                                     <div key={wilayah.id} className="bg-red-50 border border-red-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm">
                                         <div>
                                             <h3 className="font-bold text-red-800 text-lg">{wilayah.label || "Tanpa Nama"}</h3>
-                                            <p className="text-xs text-gray-500">ID: {wilayah.id}</p>
+                                            {/* <p className="text-xs text-gray-500">ID: {wilayah.id}</p> */}
                                             <p className="text-sm text-red-600 mt-2">❌ {wilayah.status || wilayah.error}</p>
                                         </div>
                                     </div>
@@ -109,7 +108,7 @@ export function CuacaBesok({ data, halaman, setHalaman, totalHalaman }) {
                                 <div key={wilayah.id} className="bg-red-50 border border-red-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm">
                                     <div>
                                         <h3 className="font-bold text-red-800 text-lg">{wilayah.label || "Tanpa Nama"}</h3>
-                                        <p className="text-xs text-gray-500">ID: {wilayah.id}</p>
+                                        {/* <p className="text-xs text-gray-500">ID: {wilayah.id}</p> */}
                                         <p className="text-sm text-red-600 mt-2">❌ {wilayah.status || wilayah.error}</p>
                                     </div>
                                 </div>
@@ -130,7 +129,7 @@ export function CuacaBesok({ data, halaman, setHalaman, totalHalaman }) {
                                     <div>
                                         <h3 className="text-lg font-bold text-gray-800 truncate">{wilayah?.lokasi.desa}</h3>
                                         <p className="text-xs text-gray-500 mb-2">{wilayah?.lokasi.kecamatan}, {wilayah?.lokasi.kabkota}</p>
-                                        <p className="text-xs text-gray-400">🕒 {besok?.waktu_lokal.substring(11, 16)}</p>
+                                        <p className="text-xs text-gray-400"> {besok?.waktu_lokal.substring(11, 16)}</p>
                                     </div>
                                     <button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold text-sm hover:bg-blue-600 transition">
                                         Lihat Detail
@@ -195,7 +194,7 @@ export function CuacaLusa({ data, halaman, setHalaman, totalHalaman }) {
                                 <div key={wilayah.id} className="bg-red-50 border border-red-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm">
                                     <div>
                                         <h3 className="font-bold text-red-800 text-lg">{wilayah.label || "Tanpa Nama"}</h3>
-                                        <p className="text-xs text-gray-500">ID: {wilayah.id}</p>
+                                        {/* <p className="text-xs text-gray-500">ID: {wilayah.id}</p> */}
                                         <p className="text-sm text-red-600 mt-2">❌ {wilayah.status || wilayah.error}</p>
                                     </div>
                                 </div>
@@ -216,7 +215,7 @@ export function CuacaLusa({ data, halaman, setHalaman, totalHalaman }) {
                                     <div>
                                         <h3 className="text-lg font-bold text-gray-800 truncate">{wilayah?.lokasi.desa}</h3>
                                         <p className="text-xs text-gray-500 mb-2">{wilayah?.lokasi.kecamatan}, {wilayah?.lokasi.kabkota}</p>
-                                        <p className="text-xs text-gray-400">🕒 {lusa?.waktu_lokal.substring(11, 16)}</p>
+                                        <p className="text-xs text-gray-400"> {lusa?.waktu_lokal.substring(11, 16)}</p>
                                     </div>
                                     <button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold text-sm hover:bg-blue-600 transition">
                                         Lihat Detail

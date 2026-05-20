@@ -54,7 +54,7 @@ export const getCuaca = async (req, res) => {
                         return { 
                             id: wilayah.id, 
                             label: wilayah.label, 
-                            status: "Data tidak ditemukan di BMKG" 
+                            status: "Informasi cuaca wilayah ini belum tersedia" 
                         };
                     }
 
@@ -100,7 +100,7 @@ export const getCuaca = async (req, res) => {
                         hari_ini: formatDataCuaca(item.cuaca[0]),
                         besok: formatDataCuaca(item.cuaca[1]),
                         lusa: formatDataCuaca(item.cuaca[2]),
-                        sumber: "BMKG"
+                        sumber: "https://data.bmkg.go.id"
                     };
                 } catch (err) {
                     return { id: wilayah.id, label: wilayah.label, error: "Gagal memproses data" };
