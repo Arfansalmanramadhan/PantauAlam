@@ -21,7 +21,7 @@ export function CuacaSaatIni({ data, halaman, setHalaman, totalHalaman }) {
                                     </div>
                                 )
                             }
-                            const skrg = wilayah.cuaca_sekarang
+                            const skrg = wilayah.hari_ini[4] || wilayah.hari_ini[0]
                             const lokasi = wilayah.lokasi;
                             return (
                                 <div key={wilayah.id} className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col justify-between">
@@ -127,8 +127,8 @@ export function CuacaBesok({ data, halaman, setHalaman, totalHalaman }) {
                                 {/* Bagian Konten */}
                                 <div className="p-4 flex-1 flex flex-col justify-between">
                                     <div>
-                                        <h3 className="text-lg font-bold text-gray-800 truncate">{wilayah?.lokasi.desa}</h3>
-                                        <p className="text-xs text-gray-500 mb-2">{wilayah?.lokasi.kecamatan}, {wilayah?.lokasi.kabkota}</p>
+                                        <h3 className="text-lg font-bold text-gray-800 truncate">{lokasi?.desa}</h3>
+                                        <p className="text-xs text-gray-500 mb-2">{lokasi?.kecamatan}, {lokasi?.kabkota}</p>
                                         <p className="text-xs text-gray-400"> {besok?.waktu_lokal.substring(11, 16)}</p>
                                     </div>
                                     <button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold text-sm hover:bg-blue-600 transition">
@@ -213,8 +213,8 @@ export function CuacaLusa({ data, halaman, setHalaman, totalHalaman }) {
                                 {/* Bagian Konten */}
                                 <div className="p-4 flex-1 flex flex-col justify-between">
                                     <div>
-                                        <h3 className="text-lg font-bold text-gray-800 truncate">{wilayah?.lokasi.desa}</h3>
-                                        <p className="text-xs text-gray-500 mb-2">{wilayah?.lokasi.kecamatan}, {wilayah?.lokasi.kabkota}</p>
+                                        <h3 className="text-lg font-bold text-gray-800 truncate">{lokasi?.desa}</h3>
+                                        <p className="text-xs text-gray-500 mb-2">{lokasi?.kecamatan}, {lokasi?.kabkota}</p>
                                         <p className="text-xs text-gray-400"> {lusa?.waktu_lokal.substring(11, 16)}</p>
                                     </div>
                                     <button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold text-sm hover:bg-blue-600 transition">
