@@ -72,12 +72,12 @@ git clone https://github.com/Arfansalmanramadhan/PantauAlam.git
 cd PantauAlam
 ```
 ### Langkah 2: Instalasi Semua Dependensi (Satu Perintah)
-Proyek ini telah dikonfigurasi agar Anda tidak perlu masuk ke folder backend dan frontend secara manual untuk melakukan instalasi paket. Cukup jalankan perintah berikut di folder root (PantauAlam/):
+Proyek ini telah dikonfigurasi agar Anda tidak perlu masuk ke folder backend dan frontend secara manual untuk melakukan instalasi paket. Cukup jalankan perintah berikut di folder root `PantauAlam/`:
 
 ```
 npm run install-all
 ```
-Perintah ini akan secara otomatis mengunduh seluruh modul node_modules yang dibutuhkan pada folder Root, Backend, dan Frontend sekaligus.
+Perintah ini akan secara otomatis mengunduh seluruh modul `node_modules` yang dibutuhkan pada folder Root, Backend, dan Frontend sekaligus.
 
 ### Langkah 3: Jalankan Mode Pengembangan (Development)
 Untuk menyalakan server Backend (Express.js) dan server Frontend (Vite) secara bersamaan dalam satu jendela terminal, jalankan perintah:
@@ -87,9 +87,9 @@ npm run dev
 ```
 Setelah log terminal menunjukkan status berhasil, buka browser Anda dan akses:
 
-* Aplikasi Utama (Frontend): http://localhost:5173
+* Aplikasi Utama (Frontend): `http://localhost:5173`
 
-* Sistem API (Backend): http://localhost:5000/api/gempa
+* Sistem API (Backend): `http://localhost:5000/api/gempa`
 
 ## Sumber Data (Data Source Attribution)
 Seluruh data prakiraan cuaca, koordinat episenter, tingkat magnitudo, status potensi tsunami, dan data kebencanaan lainnya di dalam aplikasi ini disajikan secara legal dan real-time bersumber langsung dari API Publik open-data BMKG (Badan Meteorologi, Klimatologi, dan Geofisika) Indonesia.
