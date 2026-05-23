@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
-import Sidebar from "../../components/SIdebar"
-import Header from "../../components/Header"
-import Main from "../../components/Main"
-import { CuacaSaatIni, CuacaBesok, CuacaLusa } from "../Cuaca/CuacaSaatIni"
-import Tab from "../Tab"
+import Sidebar from "../components/SIdebar"
+import Header from "../components/Header"
+import Main from "../components/Main"
+import { CuacaSaatIni, CuacaBesok, CuacaLusa } from "./Cuaca/CuacaSaatIni"
+import  Gempa  from "./gempa/Gempa"
+import Tab from "../components/Tab"
 
 function Home() {
     const [open, setOpen] = useState(window.innerWidth >= 768);
@@ -101,6 +102,9 @@ function Home() {
                             totalHalaman={totalHalaman}
                         />}
 
+                    </div>
+                    <div className="flex justify-center items-center">
+                        <Gempa />
                     </div>
                 </Main>
             </div>
