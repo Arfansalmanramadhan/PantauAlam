@@ -130,7 +130,7 @@ export const getCuaca = async (req, res) => {
 // http://localhost:5000/api/cuaca?page=1&limit=20
 export const getCuacaByID = async (req, res) => {
     try {
-        const { id_wilayah } = req.query; // Input misal: 3171031004 atau 31.71.03.1004
+        const { id_wilayah } = req.params; // Input misal: 3171031004 atau 31.71.03.1004
 
         if (!id_wilayah) return response(400, null, 'ID Wilayah wajib diisi', res);
 

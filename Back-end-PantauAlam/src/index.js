@@ -7,7 +7,7 @@ const port = 8000;
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('/api', cuacaRouter)
+app.use('/api/cuaca', cuacaRouter)
 app.use('/api/gempa', gempaRouter)
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`)
