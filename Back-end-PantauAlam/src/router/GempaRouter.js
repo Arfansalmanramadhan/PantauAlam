@@ -1,6 +1,8 @@
 import express  from 'express';
-import { getGempa }  from '../controller/GempaController.js'
+import { getGempa, getGempaTerkini, getGempaDirasakan }  from '../controller/GempaController.js'
 const router = express.Router()
 
-router.get('/gempaHome/', getGempa);
+router.get('/', getGempa);
+router.get('/gempaterkini/', getGempaTerkini);
+router.get('/gempadirasakan/', getGempaDirasakan);
 export default router;
