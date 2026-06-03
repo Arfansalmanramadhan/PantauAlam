@@ -1,5 +1,22 @@
+import { useState, useEffect } from 'react';
+export function useSidebar() {
+    const [open, setOpen] = useState(window.innerWidth >= 768);
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 768) {
+                setOpen(true);
+            } else {
+                setOpen(false);
+            }
+        };
 
-function Sidebar({open, setOpen}) {
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+    return [ open, setOpen ]
+}
+export function Sidebar({ open, setOpen }) {
 
     return (
 

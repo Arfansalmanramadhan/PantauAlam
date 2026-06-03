@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import Sidebar from "../components/SIdebar"
+import {Sidebar, useSidebar} from "../components/Sidebar"
 import Header from "../components/Header"
 import Main from "../components/Main"
 import { CuacaSaatIni, CuacaBesok, CuacaLusa } from "./Cuaca/CuacaSaatIni"
@@ -7,7 +7,7 @@ import  Gempa  from "./gempa/Gempa"
 import Tab from "../components/Tab"
 
 function Home() {
-    const [open, setOpen] = useState(window.innerWidth >= 768);
+    const [open, setOpen] = useSidebar();
     const [activetab, setActiveTab] = useState(0)
     const [daftarCuaca, setDaftarCuaca] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -36,20 +36,6 @@ function Home() {
 
             )
     }, [halaman])
-    // Detect resize layar
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth >= 768) {
-                setOpen(true);
-            } else {
-                setOpen(false);
-            }
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
     return (
         <>
             <div className="flex">
