@@ -89,7 +89,7 @@ Setelah log terminal menunjukkan status berhasil, buka browser Anda dan akses:
 
 * Aplikasi Utama (Frontend): `http://localhost:5173`
 
-* Sistem API (Backend): `http://localhost:5000/api/gempa`
+* Sistem API (Backend): `http://localhost:8000/api/gempa/`
 
 ## Sumber Data (Data Source Attribution)
 Seluruh data prakiraan cuaca, koordinat episenter, tingkat magnitudo, status potensi tsunami, dan data kebencanaan lainnya di dalam aplikasi ini disajikan secara legal dan real-time bersumber langsung dari API Publik open-data BMKG (Badan Meteorologi, Klimatologi, dan Geofisika) Indonesia.
