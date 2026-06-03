@@ -4,7 +4,7 @@ function Gempa() {
     const [gempa, setGempa] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('http://localhost:8000/api/gempa/gempaHome')
+        fetch('http://localhost:8000/api/gempa/')
             .then(response => response.json())
             .then(data => {
                 const dataGempa = data.payload || data.data || data

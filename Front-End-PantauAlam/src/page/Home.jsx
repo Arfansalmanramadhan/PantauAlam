@@ -14,7 +14,7 @@ function Home() {
     const [halaman, setHalaman] = useState(1);
     const [totalHalaman, setTotalHalaman] = useState(1);
     useEffect(() => {
-        fetch(`http://localhost:8000/api/cuaca?page=${halaman}&limit=20`)
+        fetch(`http://localhost:8000/api/cuaca/?page=${halaman}&limit=20`)
             .then(response => response.json())
             .then(data => {
                 const dataBersi = data.payload || data.data || data
