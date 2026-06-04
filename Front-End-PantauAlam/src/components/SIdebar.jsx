@@ -54,7 +54,7 @@ export function Sidebar({ open, setOpen }) {
                 <ul className="p-4 space-y-3">
                     <li>
                         <a
-                            href="#"
+                            href="/"
                             className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-100 transition"
                         >
                             Home
@@ -63,7 +63,7 @@ export function Sidebar({ open, setOpen }) {
 
                     <li>
                         <a
-                            href="#"
+                            href="/cuaca"
                             className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-100 transition"
                         >
                             Cuaca

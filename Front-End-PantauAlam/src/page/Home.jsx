@@ -41,7 +41,7 @@ function Home() {
             <div className="flex">
                 <Sidebar open={open} setOpen={setOpen} />
                 <Main open={open}>
-                    <Header />
+                    <Header label="Pantau Alam" />
 
                     <div className="flex gap-4 mb-4 relative sm:z-50 left-15">
                         <Tab
