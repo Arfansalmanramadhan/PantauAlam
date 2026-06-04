@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
-import {Sidebar, useSidebar} from "../components/Sidebar"
+import { Sidebar, useSidebar } from "../components/Sidebar"
 import Header from "../components/Header"
 import Main from "../components/Main"
+import HomeCuaca from "./Cuaca/Home"
 import { CuacaSaatIni, CuacaBesok, CuacaLusa } from "./Cuaca/CuacaSaatIni"
-import  Gempa  from "./gempa/Gempa"
+import Gempa from "./gempa/Gempa"
 import Tab from "../components/Tab"
 
 function Home() {
@@ -43,52 +44,10 @@ function Home() {
                 <Main open={open}>
                     <Header label="Pantau Alam" />
 
-                    <div className="flex gap-4 mb-4 relative sm:z-50 left-15">
-                        <Tab
-                            label="Cuaca Hari Ini"
-                            num={0}
-                            activee={activetab === 0}
-                            onClick={setActiveTab}
-                        />
+            
+                    <HomeCuaca />
 
-                        <Tab
-                            label="Cuaca Besok"
-                            num={1}
-                            activee={activetab === 1}
-                            onClick={setActiveTab}
-                        />
 
-                        <Tab
-                            label="Cuaca Lusa"
-                            num={2}
-                            activee={activetab === 2}
-                            onClick={setActiveTab}
-                        />
-                    </div>
-                    <div>
-
-                        {activetab === 0 && <CuacaSaatIni
-                            data={daftarCuaca}
-                            halaman={halaman}
-                            setHalaman={setHalaman}
-                            totalHalaman={totalHalaman}
-                        />}
-
-                        {activetab === 1 && <CuacaBesok
-                            data={daftarCuaca}
-                            halaman={halaman}
-                            setHalaman={setHalaman}
-                            totalHalaman={totalHalaman}
-                        />}
-
-                        {activetab === 2 && <CuacaLusa
-                            data={daftarCuaca}
-                            halaman={halaman}
-                            setHalaman={setHalaman}
-                            totalHalaman={totalHalaman}
-                        />}
-
-                    </div>
                     <div className="flex justify-center items-center">
                         <Gempa />
                     </div>

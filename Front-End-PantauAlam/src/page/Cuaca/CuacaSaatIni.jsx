@@ -15,7 +15,7 @@ export function CuacaSaatIni({ data, halaman, setHalaman, totalHalaman }) {
                                     <div key={wilayah.id} className="bg-red-50 border border-red-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm">
                                         <div>
                                             <h3 className="font-bold text-red-800 text-lg">{wilayah.label || "Tanpa Nama"}</h3>
-                                            {/* <p className="text-xs text-gray-500">ID: {wilayah.id}</p> */}
+                                            {/* <p className="text-xs text-white-10">ID: {wilayah.id}</p> */}
                                             <p className="text-sm text-red-600 mt-2">❌ {wilayah.status || wilayah.error}</p>
                                         </div>
                                     </div>
@@ -24,7 +24,7 @@ export function CuacaSaatIni({ data, halaman, setHalaman, totalHalaman }) {
                             const skrg = wilayah.hari_ini[4] || wilayah.hari_ini[0]
                             const lokasi = wilayah.lokasi;
                             return (
-                                <div key={wilayah.id} className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col justify-between">
+                                <div key={wilayah.id} className="bg-gray-200 rounded-2xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col justify-between">
 
                                     {/* Bagian Atas: Icon & Suhu */}
                                     <div className="bg-gradient-to-br from-blue-400 to-indigo-500 p-6 flex flex-col items-center text-white">
@@ -37,10 +37,10 @@ export function CuacaSaatIni({ data, halaman, setHalaman, totalHalaman }) {
                                     <div className="p-4 flex-1 flex flex-col justify-between">
                                         <div>
                                             <h3 className="text-lg font-bold text-gray-800 truncate">{lokasi?.provinsi}</h3>
-                                            <p className="text-xs text-gray-500 mb-2">{lokasi?.desa}, {lokasi?.kecamatan}, {lokasi?.kabkota}</p>
+                                            <p className="text-xs text-white-10 mb-2">{lokasi?.desa}, {lokasi?.kecamatan}, {lokasi?.kabkota}</p>
 
                                             {/* TAMPILAN JAM UTK WIB/WITA/WIT AUTOMATIC */}
-                                            <p className="text-xs text-gray-400 font-semibold">
+                                            <p className="text-xs text-white-10 font-semibold">
                                                 {skrg?.waktu_lokal.substring(11, 16)}
                                             </p>
                                         </div>
@@ -79,7 +79,7 @@ export function CuacaSaatIni({ data, halaman, setHalaman, totalHalaman }) {
             <div className=" flex justify-center items-center  ">
                 <div className=" flex justify-center items-center h-screen bg-gray-100 ">
                 <div className=" grid grid-cols-1 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-4 gap-5  ">
-                <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                <div className="max-w-sm mx-auto bg-gray-200 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
                     <img class="w-full h-48 object-cover" src="https://via.placeholder.com/400" alt="Card Image"></img>
                     <div className="p-4">
                         <h3 className="text-xl font-bold mb-2">jawa barat</h3>
@@ -108,7 +108,7 @@ export function CuacaBesok({ data, halaman, setHalaman, totalHalaman }) {
                                 <div key={wilayah.id} className="bg-red-50 border border-red-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm">
                                     <div>
                                         <h3 className="font-bold text-red-800 text-lg">{wilayah.label || "Tanpa Nama"}</h3>
-                                        {/* <p className="text-xs text-gray-500">ID: {wilayah.id}</p> */}
+                                        {/* <p className="text-xs text-white-10">ID: {wilayah.id}</p> */}
                                         <p className="text-sm text-red-600 mt-2">❌ {wilayah.status || wilayah.error}</p>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@ export function CuacaBesok({ data, halaman, setHalaman, totalHalaman }) {
                         const besok = wilayah.besok[4] || wilayah.besok[0]
                         const lokasi = wilayah.lokasi;
                         return (
-                            <div key={wilayah.id} className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col justify-between">
+                            <div key={wilayah.id} className="bg-gray-200 rounded-2xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col justify-between">
                                 {/* Bagian Atas: Gambar/Icon Cuaca */}
                                 <div className="bg-gradient-to-br from-blue-400 to-indigo-500 p-6 flex flex-col items-center text-white">
                                     <img className="w-20 h-20 object-contain drop-shadow-md" src={besok?.icon} alt={besok?.kondisi} />
@@ -128,8 +128,8 @@ export function CuacaBesok({ data, halaman, setHalaman, totalHalaman }) {
                                 <div className="p-4 flex-1 flex flex-col justify-between">
                                     <div>
                                         <h3 className="text-lg font-bold text-gray-800 truncate">{lokasi?.desa}</h3>
-                                        <p className="text-xs text-gray-500 mb-2">{lokasi?.kecamatan}, {lokasi?.kabkota}</p>
-                                        <p className="text-xs text-gray-400"> {besok?.waktu_lokal.substring(11, 16)}</p>
+                                        <p className="text-xs text-white-10 mb-2">{lokasi?.kecamatan}, {lokasi?.kabkota}</p>
+                                        <p className="text-xs text-white-10"> {besok?.waktu_lokal.substring(11, 16)}</p>
                                     </div>
                                     <button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold text-sm hover:bg-blue-600 transition">
                                         Lihat Detail
@@ -165,7 +165,7 @@ export function CuacaBesok({ data, halaman, setHalaman, totalHalaman }) {
             <div className=" flex justify-center items-center  ">
                 <div className=" flex justify-center items-center h-screen bg-gray-100 ">
                 <div className=" grid grid-cols-1 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-4 gap-5  ">
-                <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                <div className="max-w-sm mx-auto bg-gray-200 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
                     <img class="w-full h-48 object-cover" src="https://via.placeholder.com/400" alt="Card Image"></img>
                     <div className="p-4">
                         <h3 className="text-xl font-bold mb-2">jawa barat</h3>
@@ -194,7 +194,7 @@ export function CuacaLusa({ data, halaman, setHalaman, totalHalaman }) {
                                 <div key={wilayah.id} className="bg-red-50 border border-red-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm">
                                     <div>
                                         <h3 className="font-bold text-red-800 text-lg">{wilayah.label || "Tanpa Nama"}</h3>
-                                        {/* <p className="text-xs text-gray-500">ID: {wilayah.id}</p> */}
+                                        {/* <p className="text-xs text-white-10">ID: {wilayah.id}</p> */}
                                         <p className="text-sm text-red-600 mt-2">❌ {wilayah.status || wilayah.error}</p>
                                     </div>
                                 </div>
@@ -203,7 +203,7 @@ export function CuacaLusa({ data, halaman, setHalaman, totalHalaman }) {
                         const lusa = wilayah.lusa[4] || wilayah.lusa[0]
                         const lokasi = wilayah.lokasi;
                         return (
-                            <div key={wilayah.id} className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col justify-between">
+                            <div key={wilayah.id} className="bg-gray-200 rounded-2xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col justify-between">
                                 {/* Bagian Atas: Gambar/Icon Cuaca */}
                                 <div className="bg-gradient-to-br from-blue-400 to-indigo-500 p-6 flex flex-col items-center text-white">
                                     <img className="w-20 h-20 object-contain drop-shadow-md" src={lusa?.icon} alt={lusa?.kondisi} />
@@ -214,8 +214,8 @@ export function CuacaLusa({ data, halaman, setHalaman, totalHalaman }) {
                                 <div className="p-4 flex-1 flex flex-col justify-between">
                                     <div>
                                         <h3 className="text-lg font-bold text-gray-800 truncate">{lokasi?.desa}</h3>
-                                        <p className="text-xs text-gray-500 mb-2">{lokasi?.kecamatan}, {lokasi?.kabkota}</p>
-                                        <p className="text-xs text-gray-400"> {lusa?.waktu_lokal.substring(11, 16)}</p>
+                                        <p className="text-xs text-white-10 mb-2">{lokasi?.kecamatan}, {lokasi?.kabkota}</p>
+                                        <p className="text-xs text-white-10"> {lusa?.waktu_lokal.substring(11, 16)}</p>
                                     </div>
                                     <button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold text-sm hover:bg-blue-600 transition">
                                         Lihat Detail
@@ -251,7 +251,7 @@ export function CuacaLusa({ data, halaman, setHalaman, totalHalaman }) {
             <div className=" flex justify-center items-center  ">
                 <div className=" flex justify-center items-center h-screen bg-gray-100 ">
                 <div className=" grid grid-cols-1 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-4 gap-5  ">
-                <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                <div className="max-w-sm mx-auto bg-gray-200 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
                     <img class="w-full h-48 object-cover" src="https://via.placeholder.com/400" alt="Card Image"></img>
                     <div className="p-4">
                         <h3 className="text-xl font-bold mb-2">jawa barat</h3>
