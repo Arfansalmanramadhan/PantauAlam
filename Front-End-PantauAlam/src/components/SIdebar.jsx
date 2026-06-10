@@ -14,7 +14,7 @@ export function useSidebar() {
 
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-    return [ open, setOpen ]
+    return [open, setOpen]
 }
 export function Sidebar({ open, setOpen }) {
 
@@ -72,7 +72,7 @@ export function Sidebar({ open, setOpen }) {
 
                     <li>
                         <a
-                            href="#"
+                            href="/gempa"
                             className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-100 transition"
                         >
                             Gempa
