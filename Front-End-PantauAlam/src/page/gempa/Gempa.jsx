@@ -30,7 +30,7 @@ function Gempa() {
                         <h3 className="text-md font-semibold">Magnitude: {gempa.magnitudo}</h3>
                         <p className="text-sm text-gray-500">Tanggal: {gempa.tanggal}</p>
                         <p className="text-sm text-gray-500">Waktu: {gempa.jam}</p>
-                        <a href={gempa.link} target="_blank" rel="noopener noreferrer" className="inline-block text-center text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 p-2 m-2 rounded-md text-sm font-medium transition-colors">Lihat Detail</a>
+                        <a href='/gempa' rel="noopener noreferrer" className="inline-block text-center text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 p-2 m-2 rounded-md text-sm font-medium transition-colors">Lihat Detail</a>
                     </div>
                 </div>
             </div>
