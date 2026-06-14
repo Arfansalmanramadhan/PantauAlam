@@ -3,6 +3,7 @@ import { Sidebar, useSidebar } from "../../components/SIdebar"
 import Header from "../../components/Header"
 import Main from "../../components/Main"
 import L from "leaflet"
+import Footer from "../../components/Footer"
 import "leaflet/dist/leaflet.css"
 
 function GempaHome() {
@@ -88,7 +89,7 @@ function GempaHome() {
                         </div>
                         <div className="flex-1">
                             <div className=" bg-gray-10 rounded-x1 shadow-md p-6 flex flex-col justify-center  h-full   ">
-                                <span className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg mb-5">{gempa?.potensi}</span>
+                                <span className={`${magColor} text-black px-4 py-2 rounded-lg mb-5`}>{gempa?.potensi}</span>
                                 <span className="text-md font-semibold py-2">Waktu: {new Date(gempa?.DateTime).toLocaleString('id-ID', {
                                     weekday: "long", year: "numeric", month: "long", day: "numeric",
                                 })}</span>
