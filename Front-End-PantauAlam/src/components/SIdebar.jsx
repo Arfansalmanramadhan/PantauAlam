@@ -27,7 +27,6 @@ export function Sidebar({ open, setOpen }) {
             setOpenGempa(true);
         }
     }, [location.pathname]);
-
     return (
 
         <div className="flex">
@@ -68,8 +67,8 @@ export function Sidebar({ open, setOpen }) {
                         <Link
                             to="/"
                             className={`block p-3 rounded-lg transition ${location.pathname === "/"
-                                ? "bg-blue-600"
-                                : "hover:bg-blue-500"
+                                    ? "bg-blue-600"
+                                    : "hover:bg-blue-500"
                                 }`}
                         >
                             🏠 Home
@@ -81,8 +80,8 @@ export function Sidebar({ open, setOpen }) {
                         <Link
                             to="/cuaca"
                             className={`block p-3 rounded-lg transition ${location.pathname === "/cuaca"
-                                ? "bg-blue-600"
-                                : "hover:bg-blue-500"
+                                    ? "bg-blue-600"
+                                    : "hover:bg-blue-500"
                                 }`}
                         >
                             🌤️ Cuaca
@@ -108,8 +107,8 @@ export function Sidebar({ open, setOpen }) {
                                     <Link
                                         to="/gempa"
                                         className={`block p-2 rounded ${location.pathname === "/gempa"
-                                            ? "bg-blue-600"
-                                            : "hover:bg-blue-500"
+                                                ? "bg-blue-600"
+                                                : "hover:bg-blue-500"
                                             }`}
                                     >
                                         Semua Gempa
@@ -120,8 +119,8 @@ export function Sidebar({ open, setOpen }) {
                                     <Link
                                         to="/gempa-m5"
                                         className={`block p-2 rounded ${location.pathname === "/gempa-m5"
-                                            ? "bg-blue-600"
-                                            : "hover:bg-blue-500"
+                                                ? "bg-blue-600"
+                                                : "hover:bg-blue-500"
                                             }`}
                                     >
                                         Gempa M 5.0+
@@ -132,8 +131,8 @@ export function Sidebar({ open, setOpen }) {
                                     <Link
                                         to="/gempa-dirasakan"
                                         className={`block p-2 rounded ${location.pathname === "/gempa-dirasakan"
-                                            ? "bg-blue-600"
-                                            : "hover:bg-blue-500"
+                                                ? "bg-blue-600"
+                                                : "hover:bg-blue-500"
                                             }`}
                                     >
                                         Gempa Dirasakan
