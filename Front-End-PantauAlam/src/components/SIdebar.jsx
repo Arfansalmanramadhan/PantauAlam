@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from "react-router-dom";
 export function useSidebar() {
     const [open, setOpen] = useState(window.innerWidth >= 768);
     useEffect(() => {
@@ -17,6 +18,15 @@ export function useSidebar() {
     return [open, setOpen]
 }
 export function Sidebar({ open, setOpen }) {
+    const location = useLocation();
+
+    const [openGempa, setOpenGempa] = useState(false);
+
+    useEffect(() => {
+        if (location.pathname.startsWith("/gempa")) {
+            setOpenGempa(true);
+        }
+    }, [location.pathname]);
 
     return (
 
@@ -30,11 +40,11 @@ export function Sidebar({ open, setOpen }) {
             </button>
 
             {/* OVERLAY */}
-            {/* <div
+            <div
                 onClick={() => setOpen(false)}
                 className={`fixed inset-0  transition-opacity duration-300 z-40  ${open ? "opacity-100 visible " : "opacity-0 invisible bg-blue-400 text-white"
                     }`}
-            ></div> */}
+            ></div>
 
             {/* SIDEBAR */}
             <div
@@ -51,63 +61,89 @@ export function Sidebar({ open, setOpen }) {
                 </div>
 
                 {/* MENU */}
-                <ul className="p-4 space-y-3">
+                <ul className="p-4 space-y-2">
+
+                    {/* HOME */}
                     <li>
-                        <a
-                            href="/"
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-100 transition"
+                        <Link
+                            to="/"
+                            className={`block p-3 rounded-lg transition ${location.pathname === "/"
+                                ? "bg-blue-600"
+                                : "hover:bg-blue-500"
+                                }`}
                         >
-                            Home
-                        </a>
+                            🏠 Home
+                        </Link>
                     </li>
 
+                    {/* CUACA */}
                     <li>
-                        <a
-                            href="/cuaca"
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-100 transition"
+                        <Link
+                            to="/cuaca"
+                            className={`block p-3 rounded-lg transition ${location.pathname === "/cuaca"
+                                ? "bg-blue-600"
+                                : "hover:bg-blue-500"
+                                }`}
                         >
-                            Cuaca
-                        </a>
+                            🌤️ Cuaca
+                        </Link>
                     </li>
 
+                    {/* GEMPA */}
                     <li>
+                        <button
+                            onClick={() => setOpenGempa(!openGempa)}
+                            className="w-full text-left p-3 rounded-lg hover:bg-blue-500 transition flex justify-between"
+                        >
+                            <span>🌍 Gempa</span>
+                            <span>
+                                {openGempa ? "▲" : "▼"}
+                            </span>
+                        </button>
 
-                        <details>
-                            <summary className="cursor-pointer p-3 rounded-lg hover:bg-blue-100 transition">
-                                Gempa
-                            </summary>
-
+                        {openGempa && (
                             <ul className="ml-4 mt-2 space-y-2">
+
                                 <li>
-                                    <a
-                                        href="/gempa"
-                                        className="block p-2 rounded hover:bg-blue-100 transition"
+                                    <Link
+                                        to="/gempa"
+                                        className={`block p-2 rounded ${location.pathname === "/gempa"
+                                            ? "bg-blue-600"
+                                            : "hover:bg-blue-500"
+                                            }`}
                                     >
                                         Semua Gempa
-                                    </a>
+                                    </Link>
                                 </li>
 
                                 <li>
-                                    <a
-                                        href="/gempa-m5"
-                                        className="block p-2 rounded hover:bg-blue-100 transition"
+                                    <Link
+                                        to="/gempa-m5"
+                                        className={`block p-2 rounded ${location.pathname === "/gempa-m5"
+                                            ? "bg-blue-600"
+                                            : "hover:bg-blue-500"
+                                            }`}
                                     >
                                         Gempa M 5.0+
-                                    </a>
+                                    </Link>
                                 </li>
 
                                 <li>
-                                    <a
-                                        href="/gempa-dirasakan"
-                                        className="block p-2 rounded hover:bg-blue-100 transition"
+                                    <Link
+                                        to="/gempa-dirasakan"
+                                        className={`block p-2 rounded ${location.pathname === "/gempa-dirasakan"
+                                            ? "bg-blue-600"
+                                            : "hover:bg-blue-500"
+                                            }`}
                                     >
                                         Gempa Dirasakan
-                                    </a>
+                                    </Link>
                                 </li>
-                            </ul>
-                        </details>
 
+                            </ul>
+                        )}
                     </li>
+
                 </ul>
             </div>
         </div>
