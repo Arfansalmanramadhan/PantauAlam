@@ -147,6 +147,7 @@ function GempaHome() {
                         </div>
 
                     </div>
+                    <Footer />
                 </Main>
             </div>
         </>

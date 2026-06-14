@@ -6,6 +6,7 @@ import HomeCuaca from "./Cuaca/Home"
 import { CuacaSaatIni, CuacaBesok, CuacaLusa } from "./Cuaca/CuacaSaatIni"
 import Gempa from "./gempa/Gempa"
 import Tab from "../components/Tab"
+import Footer from "../components/Footer"
 
 function Home() {
     const [open, setOpen] = useSidebar();
@@ -44,15 +45,17 @@ function Home() {
                 <Main open={open}>
                     <Header label="Pantau Alam" />
 
-            
+
                     <HomeCuaca />
 
 
                     <div className="flex justify-center items-center">
                         <Gempa />
                     </div>
+                    <Footer />
                 </Main>
             </div>
+
         </>
     )
 }

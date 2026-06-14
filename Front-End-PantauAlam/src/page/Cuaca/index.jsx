@@ -4,6 +4,7 @@ import { Sidebar, useSidebar } from "../../components/Sidebar"
 import Header from "../../components/Header"
 import Main from "../../components/Main"
 import Tab from "../../components/Tab"
+import Footer from "../../components/Footer"
 
 function Cuaca() {
     const [open, setOpen] = useSidebar()
@@ -86,6 +87,7 @@ function Cuaca() {
                     />}
 
                 </div>
+                <Footer />
             </Main>
 
         </div>
