@@ -30,11 +30,11 @@ export function Sidebar({ open, setOpen }) {
             </button>
 
             {/* OVERLAY */}
-            <div
+            {/* <div
                 onClick={() => setOpen(false)}
                 className={`fixed inset-0  transition-opacity duration-300 z-40  ${open ? "opacity-100 visible " : "opacity-0 invisible bg-blue-400 text-white"
                     }`}
-            ></div>
+            ></div> */}
 
             {/* SIDEBAR */}
             <div
@@ -71,12 +71,42 @@ export function Sidebar({ open, setOpen }) {
                     </li>
 
                     <li>
-                        <a
-                            href="/gempa"
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-100 transition"
-                        >
-                            Gempa
-                        </a>
+
+                        <details>
+                            <summary className="cursor-pointer p-3 rounded-lg hover:bg-blue-100 transition">
+                                Gempa
+                            </summary>
+
+                            <ul className="ml-4 mt-2 space-y-2">
+                                <li>
+                                    <a
+                                        href="/gempa"
+                                        className="block p-2 rounded hover:bg-blue-100 transition"
+                                    >
+                                        Semua Gempa
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="/gempa-m5"
+                                        className="block p-2 rounded hover:bg-blue-100 transition"
+                                    >
+                                        Gempa M 5.0+
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="/gempa-dirasakan"
+                                        className="block p-2 rounded hover:bg-blue-100 transition"
+                                    >
+                                        Gempa Dirasakan
+                                    </a>
+                                </li>
+                            </ul>
+                        </details>
+
                     </li>
                 </ul>
             </div>
