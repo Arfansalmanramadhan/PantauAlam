@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../page/Home";
 import Cuaca from "../page/Cuaca"
 import GempaHome from "../page/gempa/GempaHome"
+import GempaTerkini from "../page/gempa/GempaTerkini"
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -14,5 +15,9 @@ export const router = createBrowserRouter([
     {
         path: "/gempa",
         element: <GempaHome />,
+    },
+    {
+        path: "/gempaTerkini",
+        element: <GempaTerkini />,
     }
 ])

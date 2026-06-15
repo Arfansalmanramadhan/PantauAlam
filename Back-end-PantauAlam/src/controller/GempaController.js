@@ -49,7 +49,7 @@ export const getGempaTerkini = async (req, res) => {
             Lintang: dataGempa.Lintang,
             Bujur: dataGempa.Bujur,
             magnitudo: `${dataGempa.Magnitude} SR`,
-            Kedalaman: `${dataGempa.Kedalaman} km`,
+            Kedalaman: dataGempa.Kedalaman,
             wilayah: dataGempa.Wilayah,
             Sumber: "https://data.bmkg.go.id"
         }))  
@@ -78,7 +78,7 @@ export const getGempaDirasakan = async (req, res) => {
             Lintang: dataGempa.Lintang,
             Bujur: dataGempa.Bujur,
             magnitudo: `${dataGempa.Magnitude} SR`,
-            Kedalaman: `${dataGempa.Kedalaman} km`,
+            Kedalaman: dataGempa.Kedalaman,
             wilayah: dataGempa.Wilayah,
             Sumber: "https://data.bmkg.go.id"
         }))  

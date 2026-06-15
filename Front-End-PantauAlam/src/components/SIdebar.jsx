@@ -117,8 +117,8 @@ export function Sidebar({ open, setOpen }) {
 
                                 <li>
                                     <Link
-                                        to="/gempa-m5"
-                                        className={`block p-2 rounded ${location.pathname === "/gempa-m5"
+                                        to="/gempaTerkini"
+                                        className={`block p-2 rounded ${location.pathname === "/gempaTerkini"
                                                 ? "bg-blue-600"
                                                 : "hover:bg-blue-500"
                                             }`}
