@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Main from "../../components/Main";
@@ -6,6 +7,19 @@ import { Sidebar, useSidebar } from "../../components/SIdebar";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+const formatToISO = (dateStr) => {
+    try {
+        const months = {
+            jan: '01', feb: '02', mar: '03', apr: '04', mei: '05', jun: '06',
+            jul: '07', agu: '08', sep: '09', okt: '10', nov: '11', des: '12'
+        };
+        const [day, monthName, year] = dateStr.split(" ");
+        const month = months[monthName.toLowerCase().substring(0, 3)];
+        return `${year}-${month}-${day.padStart(2, '0')}`;
+    } catch (e) {
+        return dateStr;
+    }
+};
 function GempaTerkini() {
     const [open, setOpen] = useSidebar();
     const [gempaTerkini, setGempaTerkini] = useState(null);
@@ -126,9 +140,9 @@ function GempaTerkini() {
                                             {gempa.wilayah}
                                         </td>
                                         <td className="px-4 py-3">
-                                            <a href="/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                            <Link to={`/gempabumi-M5+/detail/${formatToISO(gempa.Tanggal || gempa.tanggal)}`} className="text-blue-600 hover:underline">
                                                 Selengkapnya
-                                            </a>
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}
