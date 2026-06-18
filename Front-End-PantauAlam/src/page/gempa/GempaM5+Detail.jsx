@@ -9,10 +9,10 @@ import "leaflet/dist/leaflet.css"
 
 function GempaTerkiniDetail() {
     const [open, setOpen] = useSidebar();
+    const { Coordinates } = useParams();
     const [gempa, setGempa] = useState(null);
-    const { tanggal } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:8000/api/gempa/gempaterkini/${tanggal ? `?tanggal=${tanggal}` : ""}`)
+        fetch(`http://localhost:8000/api/gempa/gempaterkini/${Coordinates}`)
             .then(response => response.json())
             .then(data => {
                 const dataGempa = data.payload || data.data || data
@@ -22,8 +22,8 @@ function GempaTerkiniDetail() {
             .catch(err => {
                 console.error('gagal memuat data gempa', err)
             })
-    }, [tanggal])
-
+    }, [Coordinates])
+    // console.log('gempa detail', Coordinates, gempa)
     useEffect(() => {
         if (!gempa || !gempa.Coordinates) return;
         const container = L.DomUtil.get('map');
@@ -46,7 +46,6 @@ function GempaTerkiniDetail() {
                 `<b>${gempa.wilayah}</b><br>Magnitude: ${gempa.magnitudo}<br>Kedalaman: ${gempa.Kedalaman}`
             )
             .openPopup();
-        mapRef.current = map;
         return () => {
             map.remove();
         };
@@ -67,34 +66,19 @@ function GempaTerkiniDetail() {
                 <Sidebar open={open} setOpen={setOpen} />
                 <Main open={open}>
                     <Header label="Gempa Saat ini" />
-                    <div
-                        id="map"
-                        style={{
-                            height: "400px",
-                            width: "100%"
-                        }}
-                        className="rounded-xl overflow-hidden shadow-md mb-5"
-                    />
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 m-5 ">
+                        <div
+                            id="map"
+                            style={{
+                                // height: "400px",
+                                width: "100%"
+                            }}
+                            className="rounded-xl overflow-hidden shadow-md mb-5 flex-1 h-[600px] lg:h-[600px]"
+                        />
 
-                        <div className="flex-1">
-                            <div className=" bg-gray-100 rounded-2x1  flex flex-col justify-center p-5  items-center    ">
-                                {gempa?.peta_shakemap ? (
-                                    <img
-                                        src={gempa.peta_shakemap}
-                                        alt="ShakeMap Gempa"
-                                        className="w-full max-h-[full] object-contain rounded-xl shadow-md"
-                                    />
-                                ) : (
-                                    <div className="h-[300px] flex items-center justify-center text-gray-500">
-                                        ShakeMap belum tersedia
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        <div className="flex-1">
+                        
+                        <div className="flex-1 ">
                             <div className=" bg-gray-10 rounded-x1 shadow-md p-6 flex flex-col justify-center  h-full   ">
-                                <span className={`${magColor} text-black px-4 py-2 rounded-lg mb-5`}>{gempa?.potensi}</span>
                                 <span className="text-md font-semibold py-2">Waktu: {new Date(gempa?.DateTime).toLocaleString('id-ID', {
                                     weekday: "long", year: "numeric", month: "long", day: "numeric",
                                 })}</span>
@@ -134,15 +118,6 @@ function GempaTerkiniDetail() {
 
                                         <h3 className="text-xl font-bold">
                                             {gempa?.Lintang} - {gempa?.Bujur}
-                                        </h3>
-                                    </div>
-                                    <div className="bg-yellow-50 p-4 rounded-lg">
-                                        <p className="text-sm text-gray-500">
-                                            Dirasakan
-                                        </p>
-
-                                        <h3 className="text-xl font-bold">
-                                            {gempa?.Dirasakan || "Tidak ada laporan dirasakan"}
                                         </h3>
                                     </div>
 

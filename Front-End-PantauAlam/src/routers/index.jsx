@@ -18,11 +18,11 @@ export const router = createBrowserRouter([
         element: <GempaHome />,
     },
     {
-        path: "/gempaTerkini",
+        path: "/gempabumi-M5+",
         element: <GempaTerkini />,
     },
     {
-        path: "/gempabumi-M5+/detail/:tanggal",
+        path: "/gempabumi-M5+/detail/:Coordinates",
         element: <GempaTerkiniDetail />,
     }
 ])
