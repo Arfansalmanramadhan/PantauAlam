@@ -88,6 +88,7 @@ export const getGempaTerkiniKoordinat = async (req, res) => {
             magnitudo: `${dataGempa.Magnitude} SR`,
             Kedalaman: dataGempa.Kedalaman,
             wilayah: dataGempa.Wilayah,
+            potensi: dataGempa.Potensi,
             Sumber: "https://data.bmkg.go.id"
         }
         

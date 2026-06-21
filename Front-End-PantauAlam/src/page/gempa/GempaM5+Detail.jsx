@@ -76,9 +76,10 @@ function GempaTerkiniDetail() {
                             className="rounded-xl overflow-hidden shadow-md mb-5 flex-1 h-[600px] lg:h-[600px]"
                         />
 
-                        
+
                         <div className="flex-1 ">
                             <div className=" bg-gray-10 rounded-x1 shadow-md p-6 flex flex-col justify-center  h-full   ">
+                                <span className={`${magColor} text-black px-4 py-2 rounded-lg mb-5`}>{gempa?.potensi}</span>
                                 <span className="text-md font-semibold py-2">Waktu: {new Date(gempa?.DateTime).toLocaleString('id-ID', {
                                     weekday: "long", year: "numeric", month: "long", day: "numeric",
                                 })}</span>
