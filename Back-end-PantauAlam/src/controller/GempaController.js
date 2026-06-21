@@ -126,3 +126,40 @@ export const getGempaDirasakan = async (req, res) => {
         response(500, null, error.message, res);
     }
 }
+export const getGempaDirasakanKoordinat = async (req, res) => {
+    try {
+        const { Coordinates } = req.params;
+        if (!Coordinates) return response(400, null, 'Koordinat wajib diisi', res);
+        const API  = `https://data.bmkg.go.id/DataMKG/TEWS/gempadirasakan.json`;
+        const resBMKG = await fetch(API)
+        const dataBMKG = await resBMKG.json() 
+        const listGempa = dataBMKG?.Infogempa?.gempa || null;
+
+        if (!listGempa) {
+            return response(404, null, 'Informasi gempa terbaru belum tersedia', res);
+        }
+        const dataGempa = listGempa.find(gempa => gempa.Coordinates === Coordinates);
+
+        if (!dataGempa) {
+            return response(404, null, `Gempa dengan koordinat ${Coordinates} tidak ditemukan`, res);
+        }   
+        const formatGempa = {
+
+            tanggal: dataGempa.Tanggal,
+            jam: dataGempa.Jam,
+            DateTime: dataGempa.DateTime,
+            Coordinates: dataGempa.Coordinates,
+            Lintang: dataGempa.Lintang,
+            Bujur: dataGempa.Bujur,
+            magnitudo: `${dataGempa.Magnitude} SR`,
+            Kedalaman: dataGempa.Kedalaman,
+            wilayah: dataGempa.Wilayah,
+            Dirasakan: dataGempa.Dirasakan,
+            Sumber: "https://data.bmkg.go.id"
+        } 
+        
+        response(200, formatGempa, 'Success', res)
+    } catch (error) {
+        response(500, null, error.message, res);
+    }
+}
