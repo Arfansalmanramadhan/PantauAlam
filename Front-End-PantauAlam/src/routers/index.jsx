@@ -4,6 +4,7 @@ import Cuaca from "../page/Cuaca"
 import GempaHome from "../page/gempa/GempaHome"
 import GempaTerkini from "../page/gempa/GempaTerkini"
 import GempaTerkiniDetail from "../page/gempa/GempaM5+Detail"
+import GempaDirasakan from "../page/gempa/GempaDirasakan"
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -24,5 +25,9 @@ export const router = createBrowserRouter([
     {
         path: "/gempabumi-M5+/detail/:Coordinates",
         element: <GempaTerkiniDetail />,
+    },
+    {
+        path: "/gempabumi-dirasakan",
+        element: <GempaDirasakan />,
     }
 ])
