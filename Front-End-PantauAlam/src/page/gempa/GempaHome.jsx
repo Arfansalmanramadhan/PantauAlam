@@ -89,7 +89,7 @@ function GempaHome() {
                         </div>
                         <div className="flex-1">
                             <div className=" bg-gray-10 rounded-x1 shadow-md p-6 flex flex-col justify-center  h-full   ">
-                                <span className={`${magColor} text-black px-4 py-2 rounded-lg mb-5`}>{gempa?.potensi}</span>
+                                <span className={`${magColor} text-black px-4 py-2 rounded-lg mb-5`}>{gempa?.potensi || "Tidak ada laporan potensi"}</span>
                                 <span className="text-md font-semibold py-2">Waktu: {new Date(gempa?.DateTime).toLocaleString('id-ID', {
                                     weekday: "long", year: "numeric", month: "long", day: "numeric",
                                 })}</span>

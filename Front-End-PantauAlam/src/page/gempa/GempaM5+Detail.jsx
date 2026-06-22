@@ -65,7 +65,7 @@ function GempaTerkiniDetail() {
             <div className="flex">
                 <Sidebar open={open} setOpen={setOpen} />
                 <Main open={open}>
-                    <Header label="Gempa Saat ini" />
+                    <Header label={`Gempa M 5.0+ di ${gempa?.wilayah}`} />
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 m-5 ">
                         <div
                             id="map"
