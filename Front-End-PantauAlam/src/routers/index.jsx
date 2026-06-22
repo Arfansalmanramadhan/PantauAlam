@@ -5,6 +5,7 @@ import GempaHome from "../page/gempa/GempaHome"
 import GempaTerkini from "../page/gempa/GempaTerkini"
 import GempaTerkiniDetail from "../page/gempa/GempaM5+Detail"
 import GempaDirasakan from "../page/gempa/GempaDirasakan"
+import GempaDirasakanDetail from "../page/gempa/GempaDirasakanDetail"
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -29,5 +30,9 @@ export const router = createBrowserRouter([
     {
         path: "/gempabumi-dirasakan",
         element: <GempaDirasakan />,
+    },
+    {
+        path: "/gempabumi-dirasakan/detail/:Coordinates",
+        element: <GempaDirasakanDetail />,
     }
 ])
