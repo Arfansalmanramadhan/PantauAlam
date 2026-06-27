@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import response from '../utility/response.js';
+import 'dotenv/config'
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,6 +11,37 @@ const __dirname = path.dirname(__filename);
 const filePathWilayah = path.join(__dirname, '../data/api/wilayah.json');
 let cuacaCacheMap = {}; 
 const waktuMinimalSelesai = 15 * 60 * 1000;
+const apiKey = process.env.API_KEY;
+
+export const getCuacaRumah =  async (req, res) => {
+    try {
+        const { lat, lon } = req.query;
+
+        if (!lat || lat === 'undefined' || !lon || lon === 'undefined') {
+            return response(400, null, `Data lokasi tidak lengkap! Lat: ${lat}, Lon: ${lon}`, res);
+        }
+        const urlCuaca = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=id`;
+        const urlPresiksi = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=id`;
+        const resCuaca = await fetch(urlCuaca)
+        const resPrediksi = await fetch(urlPresiksi)
+        if (!resCuaca.ok || !resPrediksi.ok) return response(400, null, "Gagal mengambil data dari API penyedia cuaca", res);
+        const dataCuaca = await resCuaca.json()
+        const dataPrediksi = await resPrediksi.json()
+        // console.log(dataCuaca)
+        // console.log(dataPrediksi)
+        const hasilPagination = {
+            meta: {
+                cuaca : dataCuaca,
+                prediksi : dataPrediksi
+            }
+        };
+        response(200, hasilPagination, 'Success', res);
+    } catch (e){
+        console.error("Error di getCuacaRumah:", e.message);
+        // Wajib mengirim respons ke klien jika masuk ke block catch
+        response(500, null, "Terjadi kesalahan pada server", res);
+    }
+}
 export const getCuaca = async (req, res) => {
     try { 
         if (!fs.existsSync(filePathWilayah)) {
